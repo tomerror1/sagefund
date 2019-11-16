@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ course.title }}{% endblock %}
+
+{% block content %}
+{% for transaction in transactions %}
+<h1>{{ transaction.asset }}</h1>
+{% endfor %}
+{% endblock %}

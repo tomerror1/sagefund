@@ -1,0 +1,5 @@
+# do not track the vs-code config
+.vscode/
+
+#do not track the virtualenv
+venv/

@@ -8,10 +8,10 @@ class Deposit(models.Model):
         on_delete=models.CASCADE,
         related_name='customer',)
     number = models.IntegerField()
+    deposit_name = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.number
-
+        return self.deposit_name
 
 class Asset(models.Model):
     isin = models.CharField(max_length=12)
@@ -26,10 +26,9 @@ class Asset(models.Model):
         return self.name
 
 class Deposit_Securities(models.Model):
-    deposit = models.OneToOneField(
+    deposit = models.ForeignKey(
         Deposit,
         on_delete=models.CASCADE,
-        primary_key=True,
     )
     asset = models.ForeignKey(
         Asset,
@@ -71,5 +70,8 @@ class Portfolio_securities(models.Model):
     percentage = models.IntegerField()
     
     def __str__(self):
-        return self.asset
+        return f'{self.asset.name}, {str(self.percentage)}%'
    
+class Deposit_history(models.Model):
+    date = models.DateField()
+    value_of_deposit = models.FloatField()

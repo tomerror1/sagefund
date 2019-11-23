@@ -67,7 +67,7 @@ class Portfolio_securities(models.Model):
         Asset,
         on_delete=models.CASCADE,
     )
-    percentage = models.IntegerField()
+    percentage = models.FloatField()
     
     def __str__(self):
         return f'{self.asset.name}, {str(self.percentage)}%'

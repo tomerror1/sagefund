@@ -16,5 +16,9 @@ def portfolio_buy(request):
     deposit = Deposit.objects.filter(number=1001).get()
     securities = Portfolio_securities.objects.all()
     for security in securities:
-        Deposit_Securities.objects.create(deposit=deposit, asset=security.asset, shares=((security.percentage)*float(investment)))
+        Deposit_Securities.objects.create(
+            deposit=deposit, 
+            asset=security.asset, 
+            shares=((float(investment)*(security.percentage)/security.asset.current_price))
+        )
     return render(request, 'home.html')

@@ -83,5 +83,12 @@ class Portfolio_securities(models.Model):
         return f'{self.asset.name}, {str(self.percentage)}%'
    
 class Deposit_history(models.Model):
+    deposit = models.ForeignKey(
+        Deposit,
+        on_delete=models.CASCADE,
+    )
     date = models.DateField()
     value_of_deposit = models.FloatField()
+
+    def __str__(self):
+        return f'{self.deposit.number}, {str(self.date)}, {str(self.value_of_deposit)} EUR'

@@ -2,7 +2,15 @@ from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
-from app.models import Deposit, Asset, Deposit_Securities, Transaction, Portfolio, Portfolio_securities
+from app.models import (
+    Deposit, 
+    Asset, 
+    Deposit_Securities, 
+    Transaction, 
+    Portfolio, 
+    Portfolio_securities,
+    Deposit_history,
+)
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser
@@ -21,3 +29,4 @@ admin.site.register(Deposit_Securities)
 admin.site.register(Transaction)
 admin.site.register(Portfolio)
 admin.site.register(Portfolio_securities)
+admin.site.register(Deposit_history)

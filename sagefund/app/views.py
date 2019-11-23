@@ -25,11 +25,13 @@ def portfolio_buy(request):
     securities = Portfolio_securities.objects.all()
     order_type = "buy"
     for security in securities:
+        # create an asset in deposit for every asset in Portfolio
         Deposit_Securities.objects.create(
             deposit=deposit, 
             asset=security.asset, 
             shares=((float(investment)*(security.percentage)/security.asset.current_price)),
         )
+        # create the transactions
         Transaction.objects.create(
             asset=security.asset,
             order_type=order_type,

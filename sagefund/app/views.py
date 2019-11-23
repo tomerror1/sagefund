@@ -7,6 +7,14 @@ from .models import Deposit, Asset, Deposit_Securities, Transaction, Portfolio, 
 def dashboard(request):
     return render(request, 'dashboard/dashboard1.html')
 
+def calculate_value_of_deposit(request):
+    value_of_deposit = 0
+    deposit = Deposit_Securities.objects.all()
+    for asset in deposit:
+        value_of_deposit += asset.shares * asset.asset.current_price    
+    print(value_of_deposit)
+    return render(request, 'home.html')
+
 def transaction_list(request):
     transactions = Transaction.objects.all()
     return render(request, 'transactions/transactions.html', {'transactions': transactions})

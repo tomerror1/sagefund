@@ -1,6 +1,16 @@
 from django.shortcuts import render
+import datetime
 
-from .models import Deposit, Asset, Deposit_Securities, Transaction, Portfolio, Portfolio_securities
+from .models import (
+    Deposit, 
+    Asset,
+    Deposit_Securities, 
+    Transaction, 
+    Portfolio, 
+    Portfolio_securities,
+    Deposit_history,
+)
+
 
 # Create your views here.
 
@@ -13,6 +23,16 @@ def calculate_value_of_deposit(request):
     for asset in deposit:
         value_of_deposit += asset.shares * asset.asset.current_price    
     print(value_of_deposit)
+    return render(request, 'home.html')
+
+def calculate_performance_of_deposit(request):
+    date_of_comparison = datetime.date(2019, 1, 1)
+    deposit_value_historic = Deposit_history.objects.filter(date=date_of_comparison).get().value_of_deposit
+    date_current = datetime.date(2019, 11, 23)
+    deposit_value_current = Deposit_history.objects.filter(date=date_current).get().value_of_deposit
+    deposit_performance_value = deposit_value_current - deposit_value_historic
+    deposit_performance_percentage = (deposit_value_current-deposit_value_historic)/deposit_value_historic
+    print(f'KPIs: Performance in EUR{deposit_performance_value}, {round(deposit_performance_percentage, 2)} in %')
     return render(request, 'home.html')
 
 def transaction_list(request):

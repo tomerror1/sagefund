@@ -1,3 +1,5 @@
+from datetime import datetime 
+
 from django.db import models
 
 from django.conf import settings
@@ -41,8 +43,16 @@ class Deposit_Securities(models.Model):
 
 
 class Transaction(models.Model):
-    asset = models.CharField(max_length=255)
-    volume =  models.IntegerField()
+    date_of_transaction = models.DateTimeField(default=datetime.now)
+    asset = models.ForeignKey(
+        Asset,
+        on_delete=models.CASCADE,
+    )
+    order_type = models.CharField(max_length=12)
+    shares = models.FloatField()
+    price = models.FloatField()
+    fees = models.FloatField(default=0)
+    value =  models.FloatField()
     deposit = models.ForeignKey(
         Deposit,
         on_delete=models.CASCADE,

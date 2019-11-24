@@ -13,7 +13,9 @@
 </head>
 <body>
  
-    <div id="starting">${transactions}</div>
+    <div id="app">${transactions}
+      <TransactionTable></TransactionTable>
+    </div>
 
   <!-- bootrtap js files -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -27,16 +29,33 @@
   <!-- semantic vue ui js files -->
   <script src="https://unpkg.com/semantic-ui-vue/dist/umd/semantic-ui-vue.min.js"></script>
 
+  <script src="transactionPage.vue"></script>
+
   <script type="text/javascript">
+    // import Vue from 'vue'
+    // import App from './App.vue'
+    // import SuiVue from 'semantic-ui-vue';
+    // import 'semantic/dist/semantic.min.css';
+
+    // Vue.config.productionTip = false
+
+    // Vue.use(SuiVue);
+
+    // new Vue({
+    //   render: h => h(App),
+    // }).$mount('#app')
+    // import TransactionTable from 'transactionPage'
+    
+
     new Vue({
-      el: "#starting",
+      el: "#app",
       delimiters: ["${","}"],
       data: {
       transactions: [],
       loading: false,
     },
     mounted: function() {
-        this.getTransactions();
+        // this.getTransactions();
    },
     methods: {
         getTransactions: function() {
@@ -50,7 +69,11 @@
                  console.log(err);
                 })
    }
-    }});
+    },
+    components: {
+      TransactionTable
+    }
+  });
     </script>
 </body>
 </html>

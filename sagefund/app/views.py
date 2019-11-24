@@ -17,6 +17,9 @@ from .models import (
 def dashboard(request):
     return render(request, 'dashboard/dashboard1.html')
 
+def index(request):
+    return render(request, 'index.html')
+
 def calculate_value_of_deposit(request):
     value_of_deposit = 0
     deposit = Deposit_Securities.objects.all()

@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url, include
+from django.views.generic import TemplateView
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns 
 
 from . import views
+
+from .routers import router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +30,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('app/', include('app.urls')),
     path('', views.hello_world),
+    path('api/', include(router.urls)),
+    path('app', TemplateView.as_view(template_name='index.html')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

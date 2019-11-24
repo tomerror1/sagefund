@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <DashBoard></DashBoard>
+    <DashBoard />
+    <TransactionTable />
   </div>
 </template>
 
 <script>
 import DashBoard from './pages/DashboardPage/index'
+import TransactionTable from './pages/TransactionPage/index'
 
 export default {
   name: 'app',
   components: {
-    DashBoard
+    DashBoard,
+    TransactionTable
   }
 }
 </script>

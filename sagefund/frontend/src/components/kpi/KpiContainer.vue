@@ -1,5 +1,5 @@
 <template>
-    <div id="kpi-container">
+    <div class="kpi-container">
         <div class="kpi-container_heading">KPI</div>
         <div class="portfolio">
             <div class="portfolio_label">Portfolio Value</div>
@@ -48,5 +48,37 @@ export default {
 </script>
 
 <style scoped>
-
+  .kpi-container {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid black;
+    padding: 5vh;
+    width: 40vw;
+  }
+  .kpi-container_heading{
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-decoration: underline;
+    margin-bottom: 5vh;
+  }
+  .portfolio, .yield{
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  .portfolio{
+    margin-bottom: 5vh;
+    align-items: baseline;
+  }
+  .yield_euro, .yield_percentage{
+    display: flex;
+    flex-direction: column;
+  }
+  .portfolio_value, .yield_euro_value, .yield_percentage_value{
+    border: 1px solid black;
+    padding: 1vw;
+  }
+  .yield_euro_label, .yield_percentage_label{
+    margin-bottom: 2vh;
+  }
 </style>

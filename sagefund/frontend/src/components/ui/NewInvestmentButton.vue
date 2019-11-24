@@ -1,6 +1,6 @@
 <template lang="html">
-  <div>
-    <sui-button primary> +  {{ buttonName }}</sui-button>
+  <div class="investment_button">
+    <sui-button primary v-bind:style="{fontSize: style+'rem'}"> +  {{ buttonName }}</sui-button>
   </div>
 </template>
 
@@ -17,5 +17,16 @@ export default {
       default: null
     },
   },
+  computed: {
+    style: function(){
+      return 1.2
+    }
+  }
 };
 </script>
+
+<style >
+.primary{
+  font-size: 1.2rem;
+}
+</style>

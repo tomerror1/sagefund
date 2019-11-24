@@ -1,8 +1,10 @@
 <template>
   <div class="dashboard">
-    <ChartContainer />
-    <kpi />
-    <ButtonEmphasisExample :buttonName="newInvestmentButton" />
+    <div class="dashboard_stats">
+      <ChartContainer />
+      <kpi />
+    </div>
+    <ButtonEmphasisExample class="investment-button" :buttonName="newInvestmentButton" />
   </div>
 </template>
 
@@ -34,5 +36,14 @@ export default {
     .dashboard{
         width: 100%;
         display: flex;
+        flex-direction: column;
+    }
+    .dashboard_stats{
+      display: flex;
+      justify-content: space-around;
+    }
+    .investment-button{
+      margin-left: 5vw;
+      margin-top: 10vh;
     }
 </style>

@@ -43,7 +43,7 @@ def transaction_list(request):
     return render(request, 'transactions/transactions.html', {'transactions': transactions})
 
 def portfolio_buy(request):
-    investment = 1000
+    investment = 10_000
     deposit = Deposit.objects.filter(number=1001).get()
     securities = Portfolio_securities.objects.all()
     order_type = "buy"

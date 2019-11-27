@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import Transaction, Deposit_history
-from .serializers import TransactionSerializer, Deposit_history_Serializer
+from .models import Transaction, Deposit_history, Portfolio_securities
+from .serializers import TransactionSerializer, Deposit_history_Serializer, Portfolio_securities_Serializer
 
 class TransactionViewSet(viewsets.ModelViewSet):
     queryset = Transaction.objects.all()
@@ -9,3 +9,7 @@ class TransactionViewSet(viewsets.ModelViewSet):
 class Deposit_history_ViewSet(viewsets.ModelViewSet):
     queryset = Deposit_history.objects.all().order_by('date')
     serializer_class = Deposit_history_Serializer
+
+class Portfolio_securities_ViewSet(viewsets.ModelViewSet):
+    queryset = Portfolio_securities.objects.all().order_by('-percentage')
+    serializer_class = Portfolio_securities_Serializer
